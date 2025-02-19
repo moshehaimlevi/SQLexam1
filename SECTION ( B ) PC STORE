@@ -1,8 +1,9 @@
 ############################################################ QUESTION NUMBER 1 CREATING THE TABLES ############################################################
 
 
+
 CREATE TABLE PC_specs (
-    pc_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pc_id INTEGER PRIMARY KEY AUTOINCREMENT,  
     Screen_size INTEGER NOT NULL,
     RAM_size INTEGER NOT NULL,
     Storage_capacity INTEGER NOT NULL,  
@@ -11,18 +12,18 @@ CREATE TABLE PC_specs (
     battery_life TEXT NOT NULL
 );
 
-
 CREATE TABLE PC_info (
-    info_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pc_id INTEGER PRIMARY KEY,               -
     serial_number INTEGER NOT NULL,
     brand TEXT NOT NULL,
     model TEXT NOT NULL,
-    price REAL NOT NULL CHECK (price >= 0),        ###### NEEDS A PRICE ABOVE A 0 FOR REVENUE PURPOSES #######
-    quantity_stock INTEGER NOT NULL CHECK (quantity_stock >= 0),     #### CHECKS IF IT'S IN STOCK, MUST BE IN STOCK OR ELSE NOT GOING TO APPEAR #####      
+    price REAL NOT NULL CHECK (price >= 0),   ###### NEEDS A PRICE ABOVE A 0 FOR REVENUE PURPOSES #######     
+    quantity_stock INTEGER NOT NULL CHECK (quantity_stock >= 0),         #### CHECKS IF IT'S IN STOCK, MUST BE IN STOCK OR ELSE NOT GOING TO APPEAR #####   
     release_year INTEGER NOT NULL,
-    pc_id INTEGER,
-    FOREIGN KEY (pc_id) REFERENCES PC_specs(pc_id)         ######## A FOREIGN KEY WAS CREATED TO HELP TO FIND THE SPECS AND INFO NEEDED FOR THE SEARCHED PC I.D #######
+    FOREIGN KEY (pc_id) REFERENCES PC_specs(pc_id)   ######## A FOREIGN KEY WAS CREATED TO HELP TO FIND THE SPECS AND INFO NEEDED FOR THE SEARCHED PC I.D #######
 );
+
+
 
 
 ############################################################ QUESTION NUMBER 2 INSERTING INFO ############################################################
@@ -33,11 +34,13 @@ VALUES
 (13, 16, 256, 'Intel Iris Plus', 'macOS Big Sur', '10 hours'),
 (17, 32, 512, 'AMD Radeon Pro', 'Windows 11', '6 hours');
 
-INSERT INTO PC_info (serial_number, brand, model, price, quantity_stock, release_year, pc_id)
+
+INSERT INTO PC_info (pc_id, serial_number, brand, model, price, quantity_stock, release_year)
 VALUES
-(101, 'Dell', 'XPS 15', 1200.90, 50, 2023, 1),   
-(102, 'Apple', 'MacBook Pro 13', 1800.90, 30, 2022, 2),  
-(103, 'HP', 'Omen 17', 2200.90, 20, 2023, 3); 
+(1, 101, 'Dell', 'XPS 15', 1200.90, 50, 2023),  
+(2, 102, 'Apple', 'MacBook Pro 13', 1800.90, 30, 2022),  
+(3, 103, 'HP', 'Omen 17', 2200.90, 20, 2023);  
+
 
 
 
