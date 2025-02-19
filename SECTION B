@@ -1,0 +1,72 @@
+############################################################ QUESTION NUMBER 1 CREATING THE TABLES ############################################################
+
+CREATE TABLE PC_specs (
+    pc_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Screen_size INTEGER NOT NULL,
+    RAM_size INTEGER NOT NULL,
+    Storage_capacity INTEGER NOT NULL,  
+    GPU TEXT NOT NULL,
+    operating_system TEXT NOT NULL,
+    battery_life TEXT NOT NULL
+);
+
+CREATE TABLE PC_info (
+    pc_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    serial_number INTEGER NOT NULL,
+    brand TEXT NOT NULL,
+    model TEXT NOT NULL,
+    price REAL NOT NULL,
+    quantity_stock INTEGER NOT NULL,
+    release_year INTEGER NOT NULL,
+    FOREIGN KEY (pc_id) REFERENCES PC_specs(pc_id)     ######## A FOREIGN KEY WAS CREATED TO HELP TO FIND THE SPECS AND INFO NEEDED FOR THE SEARCHED PC I.D #######
+);
+
+
+############################################################ QUESTION NUMBER 2 INSERTING INFO ############################################################
+
+INSERT INTO PC_info (pc_id, serial_number, brand, model, price, quantity_stock, release_year)
+VALUES
+(1, 101, 'Dell', 'XPS 15', 1200.99, 25, 2023),
+(2, 102, 'Apple', 'MacBook Pro 13', 1800.99, 30, 2022),
+(3, 103, 'HP', 'Omen 17', 2200.99, 20, 2023);
+
+
+INSERT INTO PC_specs (Screen_size, RAM_size, Storage_capacity, GPU, operating_system, battery_life)
+VALUES
+(15, 32, 512, 'NVIDIA GeForce GTX 1650', 'Windows 10', '8 hours'),
+(13, 16, 256, 'Intel Iris Plus', 'macOS Big Sur', '10 hours'),
+(17, 32, 512, 'AMD Radeon Pro', 'Windows 11', '6 hours');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
